@@ -1,7 +1,12 @@
-DROP USER IF EXISTS abbate11;
-
-
-CREATE USER abbate11 WITH PASSWORD 'Abbate#11';
+DO
+$$
+BEGIN
+   PERFORM pg_terminate_backend(pg_stat_activity.pid)
+   FROM pg_stat_activity
+   WHERE pg_stat_activity.datname = 'chupacabrasDB'
+   AND pid <> pg_backend_pid();
+END
+$$;
 
 
 DROP DATABASE IF EXISTS chupacabrasDB;
@@ -10,11 +15,11 @@ DROP DATABASE IF EXISTS chupacabrasDB;
 CREATE DATABASE chupacabrasDB;
 
 
-DROP TABLE IF EXISTS Players;
-DROP TABLE IF EXISTS Team;
+DROP TABLE IF EXISTS players;
+DROP TABLE IF EXISTS team;
 
 
-CREATE TABLE Team (
+CREATE TABLE team (
     team_id SERIAL PRIMARY KEY,
     team_name VARCHAR(40) UNIQUE NOT NULL,
     players_names VARCHAR(40) NOT NULL,
@@ -24,7 +29,7 @@ CREATE TABLE Team (
 );
 
 
-CREATE TABLE Players (
+CREATE TABLE players (
     player_id SERIAL PRIMARY KEY,
     player_name VARCHAR(40) NOT NULL,
     team_id INTEGER NOT NULL,

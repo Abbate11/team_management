@@ -14,4 +14,9 @@ class DB {
     }
 }
 
+findAllPlayers() {
+  return this.query('SELECT * FROM ')
+}
+
+
 module.exports = new DB();
