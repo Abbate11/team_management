@@ -4,7 +4,7 @@ const pool = new Pool({
   host: "localhost",
   user: "postgres",
   password: "rootroot", 
-  database: "chupacabrasDB",
+  database: "chupacabras_db",
   port: 5432, // Default PostgreSQL port
 });
 

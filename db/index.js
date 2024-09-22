@@ -14,9 +14,12 @@ class DB {
     }
 }
 
-findAllPlayers() {
-  return this.query('SELECT * FROM ')
-}
+findAllPlayers() 
 
+findPlayer(player_name) 
+
+findAllTeams()
+
+findTeam()
 
 module.exports = new DB();
